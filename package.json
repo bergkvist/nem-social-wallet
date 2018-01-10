@@ -2,7 +2,7 @@
   "name": "nem-social-wallet",
   "version": "1.0.0",
   "description": "NEM Social wallet. Login with facebook and send XEM to your friends.",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/bergkvist/nem-social-wallet/issues"
   },
-  "homepage": "https://github.com/bergkvist/nem-social-wallet#readme"
+  "homepage": "https://github.com/bergkvist/nem-social-wallet#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "sequelize": "^4.31.0"
+  }
 }

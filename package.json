@@ -24,6 +24,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "nem-sdk": "^1.6.2",
     "sequelize": "^4.31.0"
   }
 }

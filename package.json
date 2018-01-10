@@ -1,0 +1,24 @@
+{
+  "name": "nem-social-wallet",
+  "version": "1.0.0",
+  "description": "NEM Social wallet. Login with facebook and send XEM to your friends.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bergkvist/nem-social-wallet.git"
+  },
+  "keywords": [
+    "nem",
+    "wallet",
+    "cryptocurrency"
+  ],
+  "author": "Tobias Bergkvist",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bergkvist/nem-social-wallet/issues"
+  },
+  "homepage": "https://github.com/bergkvist/nem-social-wallet#readme"
+}

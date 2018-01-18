@@ -2,9 +2,8 @@
 
 module.exports = (sequelize, DataTypes) => sequelize.define('Users', {
     id: {
-        type: DataTypes.UUID,
-        primaryKey: true,
-        defaultValue: DataTypes.UUIDV1
+        type: DataTypes.INTEGER,
+        primaryKey: true
     },
     firstname: {
         type: DataTypes.STRING
@@ -13,6 +12,18 @@ module.exports = (sequelize, DataTypes) => sequelize.define('Users', {
         type: DataTypes.STRING
     },
     email: {
+        type: DataTypes.STRING
+    },
+    phone: {
+        type: DataTypes.STRING
+    },
+    wallet: {
+        type: DataTypes.STRING
+    },
+    address: {
+        type: DataTypes.STRING
+    },
+    publicKey: {
         type: DataTypes.STRING
     }
 }, {

@@ -1,4 +1,5 @@
-const db = require('./models');
+const db = require('../models');
+const crypto = require('../api/crypto');
 
 async function createDebugModels() {
     const Tobias = await db.Users.create({
@@ -15,3 +16,7 @@ async function createDebugModels() {
         email: 'mats@mail'
     });
 }
+
+module.exports = {
+    createDebugModels
+};

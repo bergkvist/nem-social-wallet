@@ -18,7 +18,7 @@ apiDir.forEach(file => {
     // Ignore hidden files (swap files etc)
     if (file.match(/^\./)) return;
 
-    const { router } = require(`./api/${file}`);
+    let { router } = require(`./api/${file}`);
     if (router === undefined) return;
 
     const moduleName = file.split('.')[0];

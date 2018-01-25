@@ -1,6 +1,6 @@
 const nem = require('nem-sdk').default;
 const { networkId, endpoint } = require('../config/nemconfig');
-endpoint
+
 /**
  * Throws an error if common.privateKey is not a valid privateKey.
  * @param {Object} common - The common object containing the privateKey.

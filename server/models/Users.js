@@ -14,9 +14,6 @@ module.exports = (sequelize, DataTypes) => sequelize.define('Users', {
     email: {
         type: DataTypes.STRING
     },
-    phone: {
-        type: DataTypes.STRING
-    },
     wallet: {
         type: DataTypes.STRING
     },
@@ -31,11 +28,5 @@ module.exports = (sequelize, DataTypes) => sequelize.define('Users', {
         associate: models => {
 
         }
-    },
-    instanceMethods: {
-        fullname: () => `${this.firstname} ${this.lastname}`
-    },
-    hooks: {
-
     }
 });

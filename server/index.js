@@ -15,10 +15,18 @@ const debug = require('./debug');
 
 
 async function main() {
-    const Tobias = await db.Users.findById(0);
-    const dbWallet = await Tobias.createWallet('TobiasWallet', 'yolo');
-    const wallets = await Tobias.wallets();
-    console.log(wallets);
+    const Tobias = await db.Users.findById(1);
+    const Mats = await db.Users.findById(2);
+    
+    const TobiasWallet = await Tobias.createWallet('TobiasWallet', 'password');
+    const MatsWallet = await Mats.createWallet('MatsWallet', 'password');
+
+    await Tobias.setDefaultWallet(TobiasWallet);
+    await Mats.setDefaultWallet(MatsWallet);
+
+    const tx = await Tobias.sendXEM(100, Mats, 'password');
+
+    console.log(tx);
 }
 
 

@@ -43,60 +43,7 @@ function generatePrivateKey() {
     return privateKey;
 }
 
-function commonFromPrivateKey(privateKey) {
-    const common = nem.model.objects.create('common')('', privateKey);
-    assertCommonHasValidPrivateKey(common);
-    return common;
-}
-
-function addressFromCommon(common) {
-    assertCommonHasValidPrivateKey(common);
-    const keyPair = nem.crypto.keyPair.create(common.privateKey);
-    const publicKey = nem.utils.convert.ua2hex(keyPair.publicKey.data);
-    const address = nem.model.address.toAddress(publicKey, networkId);
-    return address;
-}
-
-function publicKeyFromCommon(common) {
-    assertCommonHasValidPrivateKey(common);
-    const keyPair = nem.crypto.keyPair.create(common.privateKey);
-    const publicKey = nem.utils.convert.ua2hex(keyPair.publicKey.data);
-    return publicKey;
-}
-
-function secretKeyFromCommon(common) {
-    assertCommonHasValidPrivateKey(common);
-    const keyPair = nem.crypto.keyPair.create(common.privateKey);
-    const secretKey = nem.utils.convert.ua2hex(keyPair.secretKey);
-    return secretKey;
-}
-
-function createTransferTransaction(amount, recipient) {
-    assertValidRecipient(recipient);
-    const transferTransaction = nem.model.objects.create('transferTransaction')(recipient, amount);
-    return transferTransaction;
-}
-
-function broadcastTransferTransaction(transferTransaction, common) {
-    assertCommonHasValidPrivateKey(common);
-    const transactionEntity = nem.model.transactions.prepare('transferTransaction')(common, transferTransaction, networkId);
-    const broadcastedTransactionPromise = nem.model.transactions.send(common, transactionEntity, endpoint);
-    return broadcastedTransactionPromise;
-}
-
-function sendTransferTransaction(amount, recipient, common) {
-    const transferTransaction = createTransferTransaction(amount, recipient);
-    const broadcastedTransactionPromise = broadcastTransferTransaction(transferTransaction, common);
-    return broadcastedTransactionPromise;
-}
-
 
 module.exports = {
-    generatePrivateKey,
-    commonFromPrivateKey,
-    addressFromCommon,
-    publicKeyFromCommon,
-    createTransferTransaction,
-    broadcastTransferTransaction,
-    sendTransferTransaction
+    generatePrivateKey
 };

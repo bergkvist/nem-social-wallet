@@ -22,20 +22,23 @@ try {
 }
 
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
 
 fs.readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-    const model = sequelize.import(path.join(__dirname, file));
+    .filter(file => {
+        return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+    })
+    .forEach(file => {
+        const model = sequelize.import(path.join(__dirname, file));
+        db[model.name] = model;
+    });
 
-    if (model.associate)      model.associate(db);
-    if ('addScopes' in model) model.addScopes(db);
-    
-    db[model.name] = model;
-  });
+Object.keys(db).forEach(modelName => {
+    const model = db[modelName];
+    if (model.associate)      { model.associate(db); }
+    if ('addScopes' in model) { model.addScopes(db); }
+});
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
 module.exports = db;

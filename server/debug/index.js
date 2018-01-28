@@ -3,16 +3,12 @@ const crypto = require('../api/crypto');
 
 async function createDebugModels() {
     const Tobias = await db.Users.create({
-        id: 0,
-        firstname: 'Tobias',
-        lastname: 'Bergkvist',
+        fullname: 'Tobias Bergkvist',
         email: 'tobias@mail',
     });
 
     const Mats = await db.Users.create({
-        id: 1,
-        firstname: 'Mats',
-        lastname: 'Skaslien',
+        fullname: 'Mats Jørgen Skaslien',
         email: 'mats@mail'
     });
 }

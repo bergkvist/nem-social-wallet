@@ -56,5 +56,13 @@ module.exports = (sequelize, DataTypes) => {
         return data.account.balance;
     }
 
+    Wallets.prototype.sendXEM = async function(amount, recipient, password) {
+        const common = this.decrypt(password);
+        const transferTransaction = nem.model.objects.create('transferTransaction')(recipient, amount);
+        const transactionEntity = nem.model.transactions.prepare('transferTransaction')(common, transferTransaction, networkId);
+        const broadcastedTransactionPromise = nem.model.transactions.send(common, transactionEntity, endpoint);
+        return broadcastedTransactionPromise;
+    }
+
     return Wallets;
 }

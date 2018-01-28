@@ -15,7 +15,7 @@ async function createNewUser(name, facebookId) {
 
 
 async function userExists() {
-    const users 
+    const users = 0;
 }
 
 
